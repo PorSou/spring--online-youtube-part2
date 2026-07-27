@@ -1,0 +1,3 @@
+ps:
+  app:
+    api-url: http://localhost:8080

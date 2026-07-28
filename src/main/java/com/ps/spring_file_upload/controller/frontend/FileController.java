@@ -29,7 +29,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileController {
 
-    private final StorageService storageService;
     private final FileService fileService;
     private final AppProperty property;
 
@@ -46,7 +45,7 @@ public class FileController {
             }
     )
     @PostMapping(value = "/upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Object> upload(@RequestPart("file") MultipartFile file){
+    public ResponseEntity<BaseBodyResponse> upload(@RequestPart("file") MultipartFile file){
         FileEntity data = this.fileService.upload(file);
 
         return ResponseUtilFullUI.buildSuccessResponse(FileResponse.toResponse(data,this.property), "Uploading successfully!");
@@ -65,16 +64,16 @@ public class FileController {
             }
     )
     @PostMapping(value = "/batch-upload", consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Object> batchUpload(@RequestPart("files") List<MultipartFile> files){
-        this.storageService.batchUpload(files);
+    public ResponseEntity<BaseBodyResponse> batchUpload(@RequestPart("files") List<MultipartFile> files){
+        List<FileEntity> data = this.fileService.batchUpload(files);
 
-        return ResponseEntity.ok("Hello");
+        return ResponseUtilFullUI.buildSuccessResponse(FileResponse.toResponse(data,this.property),"Uploading All Successfully");
     }
 
     @GetMapping("/load/{fileName}")
     public void loadFile(@PathVariable String fileName, HttpServletResponse response){
-        this.storageService.loadFile(fileName,response);
-        ResponseEntity.ok("Hi");
+        fileService.loadFile(fileName, response);
+//        ResponseEntity.ok("ok");
     }
 
 }

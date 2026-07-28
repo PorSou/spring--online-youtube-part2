@@ -11,7 +11,7 @@ public class ResponseUtilFullUI {
     /**
      * Build standard success response
      */
-    public static ResponseEntity<Object> buildSuccessResponse(Object data, String message) {
+    public static ResponseEntity<BaseBodyResponse> buildSuccessResponse(Object data, String message) {
 
         BaseBodyResponse response = new BaseBodyResponse();
 
@@ -33,7 +33,7 @@ public class ResponseUtilFullUI {
      * Build standard error response
      */
 
-    public static ResponseEntity<Object> buildErrorResponse(HttpStatusCode statusCode, String message) {
+    public static ResponseEntity<BaseBodyResponse> buildErrorResponse(HttpStatusCode statusCode, String message) {
 
         BaseBodyResponse response = new BaseBodyResponse();
 

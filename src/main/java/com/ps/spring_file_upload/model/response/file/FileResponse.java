@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -34,6 +35,14 @@ public class FileResponse {
         response.setType(entity.getType());
 
         return response;
+    }
+
+    public static List<FileResponse> toResponse(List<FileEntity> entities, AppProperty property) {
+        if (entities == null) return null;
+
+        return entities.stream()
+                .map(entity -> toResponse(entity, property))
+                .toList();
     }
 
 }

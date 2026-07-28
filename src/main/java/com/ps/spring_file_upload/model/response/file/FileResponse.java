@@ -1,6 +1,5 @@
 package com.ps.spring_file_upload.model.response.file;
 
-import com.ps.spring_file_upload.controller.FileSizeResponse;
 import com.ps.spring_file_upload.model.entity.FileEntity;
 import com.ps.spring_file_upload.property.AppProperty;
 import lombok.Getter;

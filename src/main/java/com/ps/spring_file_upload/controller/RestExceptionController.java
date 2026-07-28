@@ -6,6 +6,7 @@ import com.ps.spring_file_upload.exception.InternalServerErrorException;
 import com.ps.spring_file_upload.exception.NotFoundException;
 import com.ps.spring_file_upload.infrastructure.model.body.BaseBodyResponse;
 import com.ps.spring_file_upload.infrastructure.model.body.StatusResponse;
+import com.ps.spring_file_upload.model.response.file.ResponseUtilFullUI;
 import org.jspecify.annotations.NonNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;

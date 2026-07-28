@@ -1,4 +1,4 @@
-package com.ps.spring_file_upload.controller;
+package com.ps.spring_file_upload.model.response.file;
 
 import lombok.Getter;
 import lombok.Setter;

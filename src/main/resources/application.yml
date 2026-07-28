@@ -10,7 +10,7 @@ spring:
       max-file-size: 1MB
       max-request-size: 10MB
   datasource:
-    url: jdbc:postgresql://localhost:5433/jfswd_1_upload_file_db
+    url: jdbc:postgresql://localhost:5432/jfswd_1_upload_file_db
     username: postgres
     password: 123
     driver-class-name: org.postgresql.Driver

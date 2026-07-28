@@ -28,7 +28,7 @@ public class BaseBodyResponse implements Serializable {
             "totalPage": 1,
             "page": 0,
             "totalCount": 5,
-            "pageSize": 10
+            "pageSize": 3
         }
     },
     "status": {

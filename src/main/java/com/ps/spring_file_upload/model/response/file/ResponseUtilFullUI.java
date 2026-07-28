@@ -1,7 +1,8 @@
-package com.ps.spring_file_upload.controller;
+package com.ps.spring_file_upload.model.response.file;
 
 import com.ps.spring_file_upload.infrastructure.model.body.BaseBodyResponse;
 import com.ps.spring_file_upload.infrastructure.model.body.BodyResponse;
+import com.ps.spring_file_upload.infrastructure.model.body.PageResponse;
 import com.ps.spring_file_upload.infrastructure.model.body.StatusResponse;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +12,7 @@ public class ResponseUtilFullUI {
     /**
      * Build standard success response
      */
-    public static ResponseEntity<BaseBodyResponse> buildSuccessResponse(Object data, String message) {
+    public static ResponseEntity<BaseBodyResponse> buildSuccessResponse(Object data,String message) {
 
         BaseBodyResponse response = new BaseBodyResponse();
 
@@ -21,6 +22,24 @@ public class ResponseUtilFullUI {
 
         BodyResponse body = new BodyResponse();
         body.setData(data);
+
+        response.setSuccess(true);
+        response.setStatus(status);
+        response.setBody(body);
+
+        return ResponseEntity.ok(response);
+    }
+
+    public static ResponseEntity<BaseBodyResponse> buildSuccessResponse(Object data, PageResponse pageResponse, String message) {
+        BaseBodyResponse response = new BaseBodyResponse();
+
+        StatusResponse status = new StatusResponse();
+        status.setCode((short) 200);
+        status.setMessage(message);
+
+        BodyResponse body = new BodyResponse();
+        body.setData(data);
+        body.setPageResponse(pageResponse);
 
         response.setSuccess(true);
         response.setStatus(status);

@@ -5,6 +5,10 @@ import com.ps.spring_file_upload.model.entity.FileEntity;
 import com.ps.spring_file_upload.repository.FileRepository;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -64,4 +68,10 @@ public class FileService {
     public void loadFile(String fileName, HttpServletResponse response) {
         storageService.loadFile(fileName, response);
     }
+
+    public Page<FileEntity> getFiles(int page, int size) {
+        Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.ASC, "createdAt"));
+        return fileRepository.findAll(pageable);
+    }
+
 }
